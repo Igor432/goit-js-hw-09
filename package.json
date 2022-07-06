@@ -18,10 +18,7 @@
     "url": "https://github.com/Igor432/goit-js-hw-09/issues"
   },
   "dependencies": {
-    "flatpickr": "^4.6.13",
-    "gh": "^2.8.9",
-    "modern-normalize": "^1.1.0",
-    "pages": "0.0.16"
+    "modern-normalize": "^1.1.0"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.6.0",
