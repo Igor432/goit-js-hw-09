@@ -1,4 +1,5 @@
 import flatpickr from "flatpickr";
+import Notiflix from 'notiflix';
 
 import "flatpickr/dist/flatpickr.min.css";
 
@@ -13,6 +14,9 @@ const timer = timerDiv.children;
 
 
 timerDiv.style.display = 'flex';
+
+
+
 
 daysCount.style.textAlign = 'center';
 hoursCount.style.textAlign = 'center';
@@ -47,7 +51,7 @@ inputDate.addEventListener('input', () => {
     console.log(chosenDate);
 
     if (chosenDate < new Date()) {
-        window.alert('fuck you');
+        Notiflix.Notify.failure('Please choose a date in the future');
     } else {
         startBut.disabled = false;
         startBut.addEventListener('click', () => {
@@ -64,6 +68,7 @@ inputDate.addEventListener('input', () => {
 /* time count */
 
 function convertMs(ms) {
+
     // Number of milliseconds per unit of time
     const second = 1000;
     const minute = second * 60;
@@ -79,13 +84,36 @@ function convertMs(ms) {
     // Remaining seconds
     const seconds = Math.floor((((ms % day) % hour) % minute) / second);
 
-    daysCount.innerHTML = days;
-    hoursCount.innerHTML = hours;
-    minutesCount.innerHTML = minutes
-    secondsCount.innerHTML = seconds;
+
+    /*
+
+    minutes.toString().padStart(2, 0);
+    console.log(minutes);
+
+    */
+
+    const counters = [days, hours, minutes, seconds];
+
+    function addLeadingZero(value) {
+        const result = value.map(str => str.toString().padStart(2, 0))
+        daysCount.innerHTML = result[0];
+        hoursCount.innerHTML = result[1];
+        minutesCount.innerHTML = result[2];
+        secondsCount.innerHTML = result[3];
+    }
+    addLeadingZero(counters);
+
+
+
+
+
+
+
+
+
+
 
 }
-
 
 
 
