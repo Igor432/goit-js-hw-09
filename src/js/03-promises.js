@@ -29,21 +29,26 @@ function createPromise(position, delay) {
         Notiflix.Notify.warning(`❌ Rejected promise ${position} in ${delay}ms`);
       })
       .finally(doNext);
-
-
   }, firstDelay)
 
 
   function doNext() {
     for (i = 1; i < amount; i++) {
 
+      position = 1;
+
+
       setTimeout(() => {
-        new Promise((resolve, reject) => {
+        return new Promise((resolve, reject) => {
+          const shouldResolve = Math.random() > 0.3;
+
+          const first = parseInt(firstDelay)
+          const secDelay = stepDelay * position;
 
           if (shouldResolve) {
-            resolve({ position: i * 1, delay: stepDelay })
+            resolve({ position: position++, delay: first + secDelay })
           } else {
-            reject({ position: i * 1, delay: stepDelay });
+            reject({ position: position++, delay: first + secDelay });
           }
         }).then(({ position, delay }) => {
           Notiflix.Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
