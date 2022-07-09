@@ -62,7 +62,7 @@ function createPromise(position, delay) {
     }
   }
 
-}
+};
 
 form.addEventListener('submit', (ev) => {
   ev.preventDefault();
