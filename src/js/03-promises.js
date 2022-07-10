@@ -18,9 +18,9 @@ function createPromise(position, delay) {
     return new Promise((resolve, reject) => {
 
       if (shouldResolve) {
-        resolve({ position: 1, delay: firstDelay })
+        resolve({ position: 0, delay: firstDelay })
       } else {
-        reject({ position: 1, delay: firstDelay });
+        reject({ position: 0, delay: firstDelay });
       }
     }
     )
@@ -38,7 +38,7 @@ function createPromise(position, delay) {
   function doNext() {
     for (let i = 1; i < amount; i++) {
 
-      position = 2;
+      position = 1;
 
 
       setTimeout(() => {
