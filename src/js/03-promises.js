@@ -1,6 +1,9 @@
 
 const form = document.querySelector('.form')
+
+
 import Notiflix from 'notiflix';
+
 
 
 
@@ -33,7 +36,7 @@ function createPromise(position, delay) {
 
 
   function doNext() {
-    for (i = 1; i < amount; i++) {
+    for (let i = 1; i < amount; i++) {
 
       position = 1;
 
