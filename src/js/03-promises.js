@@ -13,7 +13,7 @@ function createPromise(position, delay) {
   const shouldResolve = Math.random() > 0.3;
 
   setTimeout(() => {
-    return new Promise((resolve, reject) => {
+    const newProm = new Promise((resolve, reject) => {
 
       if (shouldResolve) {
         resolve({ position: 1, delay: firstDelay })
@@ -35,7 +35,7 @@ function createPromise(position, delay) {
 
 
   function doNext() {
-    for (let i = 2; i < amount; i++) {
+    for (let i = 1; i < amount; i++) {
 
       position = 2;
 
@@ -63,6 +63,8 @@ function createPromise(position, delay) {
 
     }
   }
+
+  console.log
 
 };
 
