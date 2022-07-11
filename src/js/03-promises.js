@@ -3,7 +3,6 @@ const form = document.querySelector('.form')
 
 const values = {}
 
-
 function createPromise(position, delay) {
   const firstDelay = form.querySelector('input[name="delay"]').value
   const stepDelay = form.querySelector('input[name="step"]').value
@@ -33,11 +32,11 @@ function createPromise(position, delay) {
       .finally(doNext);
   }, firstDelay)
 
-
   function doNext() {
     for (let i = 1; i < amount; i++) {
 
       position = 2;
+      delay = firstDelay + stepDelay * position
 
       setTimeout(() => {
         return new Promise((resolve, reject) => {
@@ -73,5 +72,6 @@ form.addEventListener('submit', (ev) => {
 })
 
 form.addEventListener('submit', createPromise)
+
 
 
