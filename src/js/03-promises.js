@@ -1,9 +1,7 @@
 
 const form = document.querySelector('.form')
 
-
-import Notiflix from 'notiflix';
-
+const values = {}
 
 
 function createPromise(position, delay) {
@@ -18,35 +16,35 @@ function createPromise(position, delay) {
     return new Promise((resolve, reject) => {
 
       if (shouldResolve) {
-        resolve({ position: 0, delay: firstDelay })
+        resolve({ position: 1, delay: firstDelay })
       } else {
-        reject({ position: 0, delay: firstDelay });
+        reject({ position: 1, delay: firstDelay });
       }
     }
     )
       .then(({ position, delay }) => {
-        Notiflix.Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
+        console.log
+          (`✅ Fulfilled promise ${position} in ${delay}ms`);
       })
       .catch(({ position, delay }) => {
-        Notiflix.Notify.warning(`❌ Rejected promise ${position} in ${delay}ms`);
+        console.log
+          (`❌ Rejected promise ${position} in ${delay}ms`);
       })
       .finally(doNext);
   }, firstDelay)
 
 
-
   function doNext() {
-    for (let i = 1; i < amount; i++) {
+    for (let i = 2; i < amount; i++) {
 
-      position = 1;
-
+      position = 2;
 
       setTimeout(() => {
         return new Promise((resolve, reject) => {
           const shouldResolve = Math.random() > 0.3;
 
           const first = parseInt(firstDelay)
-          const secDelay = stepDelay * position;
+          const secDelay = stepDelay * (position - 1);
 
           if (shouldResolve) {
             resolve({ position: position++, delay: first + secDelay })
@@ -54,18 +52,17 @@ function createPromise(position, delay) {
             reject({ position: position++, delay: first + secDelay });
           }
         }).then(({ position, delay }) => {
-          Notiflix.Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
+          console.log
+            (`✅ Fulfilled promise ${position} in ${delay}ms`);
         })
           .catch(({ position, delay }) => {
-            Notiflix.Notify.warning(`❌ Rejected promise ${position} in ${delay}ms`);
+            console.log
+              (`❌ Rejected promise ${position} in ${delay}ms`);
           });
       }, stepDelay * i)
 
-
     }
   }
-
-
 
 };
 
@@ -74,3 +71,5 @@ form.addEventListener('submit', (ev) => {
 })
 
 form.addEventListener('submit', createPromise)
+
+
