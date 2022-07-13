@@ -1,5 +1,7 @@
 
 const form = document.querySelector('.form')
+import Notiflix from 'notiflix';
+
 
 
 function createPromise(position, delay) {
