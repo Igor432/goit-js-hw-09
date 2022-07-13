@@ -11,41 +11,11 @@ function createPromise(position, delay) {
     if (shouldResolve) {
 
       resolve({ position, delay })
-    } else { // Fulfill
+    } else {
       reject({ position, delay })
     }
   })
 }
-
-
-/*
- 
-  function doNext() {
-    for (let i = 1; i < amount; i++) {
- 
-      position = 2;
-      delay = firstDelay + stepDelay * position
- 
-      setTimeout(() => {
-        const newProm = new Promise((resolve, reject) => {
-          const shouldResolve = Math.random() > 0.3;
- 
-          const first = parseInt(firstDelay)
-          const secDelay = stepDelay * (position - 1);
- 
-          if (shouldResolve) {
-            resolve({ position: position++, delay: first + secDelay })
-          } else {
-            reject({ position: position++, delay: first + secDelay });
-          }
-        })
-      }, stepDelay * i)
- 
-    }
-  }
-*/
-
-
 
 
 form.addEventListener('submit', (ev) => {
@@ -64,11 +34,11 @@ form.addEventListener('submit', () => {
   setTimeout(() => {
     createPromise(1, firstDelay).then(({ position, delay }) => {
 
-      console.log
+      Notiflix.Notify.success
         (`✅ Fulfilled promise ${position} in ${delay}ms`);
     })
       .catch(({ position, delay }) => {
-        console.log
+        Notiflix.Notify.failure
           (`❌ Rejected promise ${position} in ${delay}ms`);
       }).finally(doNext)
   }, firstDelay)
@@ -83,11 +53,11 @@ form.addEventListener('submit', () => {
 
         createPromise(i, parseInt(firstDelay) + delayResult).then(({ position, delay }) => {
 
-          console.log
+          Notiflix.Notify.success
             (`✅ Fulfilled promise ${position} in ${delay}ms`);
         })
           .catch(({ position, delay }) => {
-            console.log
+            Notiflix.Notify.failure
               (`❌ Rejected promise ${position} in ${delay}ms`);
           });
       }, stepDel * i);
