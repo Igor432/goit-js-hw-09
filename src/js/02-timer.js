@@ -51,6 +51,8 @@ inputDate.addEventListener('input', () => {
     console.log(chosenDate);
 
     if (chosenDate < new Date()) {
+        startBut.disabled = true;
+
         Notiflix.Notify.failure('Please choose a date in the future');
     } else {
         startBut.disabled = false;
